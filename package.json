@@ -1,0 +1,22 @@
+{
+  "name": "usemany",
+  "version": "1.0.0",
+  "description": "Use multiple chained functions as a hook",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/jitcoder/usemany.git"
+  },
+  "keywords": [
+    "react",
+    "hooks"
+  ],
+  "author": "jitcoder",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.8.0"
+  }
+}

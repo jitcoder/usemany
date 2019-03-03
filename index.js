@@ -1,6 +1,6 @@
 const { useState } = require('react');
 
-const chain = (functions) => {
+export const chain = (functions) => {
   let chained = Promise.resolve(typeof functions[0] === 'function' ? functions[0]() : functions[0]);
 
   for (let i = 1; i < functions.length; i++) {
@@ -10,13 +10,13 @@ const chain = (functions) => {
   return chained;
 }
 
-class FuncArray extends Array {
+export class FuncArray extends Array {
   get chain() {
     return chain(this);
   }
 }
 
-function useMany(initialState, funcs) {
+export default function useMany(initialState, funcs) {
   const [state, setState] = useState(initialState);
   useEffect(async () => {
     if (funcs instanceof FuncArray) {
@@ -30,10 +30,3 @@ function useMany(initialState, funcs) {
 
   return state;
 }
-
-module.exports = {
-  chain,
-  FuncArray,
-  useMany,
-  default: useMany
-};

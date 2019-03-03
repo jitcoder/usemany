@@ -1,6 +1,6 @@
 {
   "name": "usemany",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Use multiple chained functions as a hook",
   "main": "index.js",
   "scripts": {

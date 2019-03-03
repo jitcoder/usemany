@@ -7,7 +7,9 @@ export const chain = (functions) => {
     chained = chained.then(functions[i]);
   }
 
-  return chained;
+  return chained.catch((e) => {
+    console.error(e);
+  });
 }
 
 export class FuncArray extends Array {
@@ -18,15 +20,19 @@ export class FuncArray extends Array {
 
 export default function useMany(initialState, funcs) {
   const [state, setState] = useState(initialState);
-  useEffect(async () => {
-    if (funcs instanceof FuncArray) {
-      const result = await funcs.chain;
-      setState(result);
-    } else {
-      const result = await chain(funcs);
-      setState(result);
+  useEffect(() => {
+    const useEffectAsync = async () => {
+      if (funcs instanceof FuncArray) {
+        const result = await funcs.chain;
+        setState(result);
+      } else {
+        const result = await chain(funcs);
+        setState(result);
+      }
     }
-  });
+
+    useEffectAsync();
+  }, []);
 
   return state;
 }

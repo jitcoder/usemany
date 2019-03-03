@@ -1,4 +1,4 @@
-const { useState } = require('react');
+const { useState, useEffect } = require('react');
 
 export const chain = (functions) => {
   let chained = Promise.resolve(typeof functions[0] === 'function' ? functions[0]() : functions[0]);
